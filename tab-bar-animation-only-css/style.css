@@ -1,0 +1,214 @@
+.tabs {
+  --background: #FFFFFF;
+  --grey: #C9CBD5;
+  --primary: #4E29F0;
+  --primary-light: #725AFC;
+  --secondary: #FFD100;
+  --width: 300px;
+  --height: 75px;
+  --border-radius: var(--height);
+  background: var(--background);
+  width: var(--width);
+  height: var(--height);
+  padding: 0;
+  position: relative;
+  border-radius: var(--border-radius);
+  box-shadow: 0 10px 30px rgba(65, 72, 86, 0.05);
+  display: -webkit-box;
+  display: flex;
+  justify-content: space-around;
+  -webkit-box-align: center;
+          align-items: center;
+  overflow: hidden;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+.tabs label {
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  position: relative;
+  display: -webkit-box;
+  display: flex;
+  justify-content: space-around;
+  -webkit-box-align: center;
+          align-items: center;
+}
+.tabs label::before {
+  content: "";
+  height: 4px;
+  width: 4px;
+  border-radius: 0% 100% 50% 50% / 0% 50% 50% 100%;
+  -webkit-transform: scale(1, 1) rotate(45deg);
+          transform: scale(1, 1) rotate(45deg);
+  -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+  background: var(--primary-light);
+  display: block;
+  position: absolute;
+  top: -30px;
+}
+.tabs label svg {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+}
+.tabs label svg .icon {
+  fill: var(--grey);
+}
+.tabs label svg .icon-border {
+  fill: #FFFFFF;
+  opacity: 0;
+}
+.tabs label svg .icon-fill {
+  opacity: 0;
+}
+.tabs input {
+  display: none;
+}
+.tabs input:checked + label::before {
+  -webkit-animation: drop-animation .35s ease-in both;
+          animation: drop-animation .35s ease-in both;
+}
+.tabs input:checked + label svg {
+  -webkit-animation: stretch-animation .5s ease-out .3s;
+          animation: stretch-animation .5s ease-out .3s;
+}
+.tabs input:checked + label svg .icon-border {
+  -webkit-animation: clip-animation-border .5s ease .3s forwards;
+          animation: clip-animation-border .5s ease .3s forwards;
+}
+.tabs input:checked + label svg .icon-fill {
+  -webkit-animation: clip-animation .5s ease .3s forwards;
+          animation: clip-animation .5s ease .3s forwards;
+}
+
+@-webkit-keyframes stretch-animation {
+  25% {
+    -webkit-transform: scale3d(0.9, 1.2, 1);
+            transform: scale3d(0.9, 1.2, 1);
+    margin-top: 10px;
+  }
+  75% {
+    -webkit-transform: scale3d(1.1, 0.95, 1);
+            transform: scale3d(1.1, 0.95, 1);
+  }
+}
+
+@keyframes stretch-animation {
+  25% {
+    -webkit-transform: scale3d(0.9, 1.2, 1);
+            transform: scale3d(0.9, 1.2, 1);
+    margin-top: 10px;
+  }
+  75% {
+    -webkit-transform: scale3d(1.1, 0.95, 1);
+            transform: scale3d(1.1, 0.95, 1);
+  }
+}
+@-webkit-keyframes drop-animation {
+  70% {
+    -webkit-transform: scale(1, 2) rotate(45deg);
+            transform: scale(1, 2) rotate(45deg);
+    top: -7px;
+  }
+  100% {
+    -webkit-transform: scale(1.5, 0.5) rotate(45deg);
+            transform: scale(1.5, 0.5) rotate(45deg);
+    top: 3px;
+  }
+}
+@keyframes drop-animation {
+  70% {
+    -webkit-transform: scale(1, 2) rotate(45deg);
+            transform: scale(1, 2) rotate(45deg);
+    top: -7px;
+  }
+  100% {
+    -webkit-transform: scale(1.5, 0.5) rotate(45deg);
+            transform: scale(1.5, 0.5) rotate(45deg);
+    top: 3px;
+  }
+}
+@-webkit-keyframes clip-animation {
+  from {
+    opacity: 1;
+    -webkit-clip-path: circle(0% at 50% -20%);
+            clip-path: circle(0% at 50% -20%);
+  }
+  to {
+    opacity: 1;
+    -webkit-clip-path: circle(110% at top);
+            clip-path: circle(110% at top);
+  }
+}
+@keyframes clip-animation {
+  from {
+    opacity: 1;
+    -webkit-clip-path: circle(0% at 50% -20%);
+            clip-path: circle(0% at 50% -20%);
+  }
+  to {
+    opacity: 1;
+    -webkit-clip-path: circle(110% at top);
+            clip-path: circle(110% at top);
+  }
+}
+@-webkit-keyframes clip-animation-border {
+  from {
+    opacity: 1;
+    -webkit-clip-path: circle(20% at 50% -20%);
+            clip-path: circle(20% at 50% -20%);
+  }
+  to {
+    opacity: 1;
+    -webkit-clip-path: circle(130% at top);
+            clip-path: circle(130% at top);
+  }
+}
+@keyframes clip-animation-border {
+  from {
+    opacity: 1;
+    -webkit-clip-path: circle(20% at 50% -20%);
+            clip-path: circle(20% at 50% -20%);
+  }
+  to {
+    opacity: 1;
+    -webkit-clip-path: circle(130% at top);
+            clip-path: circle(130% at top);
+  }
+}
+body {
+  background: #eeeef5;
+  height: 100vh;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+}
+body .socials {
+  position: fixed;
+  display: block;
+  left: 20px;
+  bottom: 20px;
+}
+body .socials > a {
+  display: block;
+  width: 30px;
+  opacity: .2;
+  -webkit-transform: scale(var(--scale, 0.8));
+          transform: scale(var(--scale, 0.8));
+  -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.38, -0.12, 0.24, 1.91);
+  transition: -webkit-transform 0.3s cubic-bezier(0.38, -0.12, 0.24, 1.91);
+  transition: transform 0.3s cubic-bezier(0.38, -0.12, 0.24, 1.91);
+  transition: transform 0.3s cubic-bezier(0.38, -0.12, 0.24, 1.91), -webkit-transform 0.3s cubic-bezier(0.38, -0.12, 0.24, 1.91);
+}
+body .socials > a:hover {
+  --scale: 1;
+}
